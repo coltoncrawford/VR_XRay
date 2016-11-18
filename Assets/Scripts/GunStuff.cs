@@ -40,4 +40,9 @@ public class GunStuff : MonoBehaviour {
             if(ammo > 0) { FireBullet(); }
         }
 	}
+
+    public bool IsEmpty
+    {
+        get { return ammo <= 0; }
+    }
 }

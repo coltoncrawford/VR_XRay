@@ -29,8 +29,13 @@ public class Health : MonoBehaviour {
             if(obs != null)
             {
                 obs.HideHiddenObjects();
+                Destroy(obs);
             }
-            //Destroy(gameObject);
         }
+    }
+
+    public bool IsDead
+    {
+        get { return isDead; }
     }
 }
