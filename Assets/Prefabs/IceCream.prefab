@@ -21,7 +21,7 @@ GameObject:
   - 4: {fileID: 4000011058184508}
   - 33: {fileID: 33000012286615958}
   - 23: {fileID: 23000013196580500}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: IceCream
   m_TagString: Untagged
   m_Icon: {fileID: 0}
