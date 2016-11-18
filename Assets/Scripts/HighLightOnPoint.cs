@@ -3,29 +3,32 @@ using System.Collections;
 
 public class HighLightOnPoint : MonoBehaviour {
 
-    public Material onHighlight;
-    public Material onBase;
+    //public Material onHighlight;
+    //public Material onBase;
     public float angleThreshold;
 
-    GameObject[] people;
+    HiddenObjects[] objects;
 
 	// Use this for initialization
 	void Start () {
-        people = GameObject.FindGameObjectsWithTag("person");
+        objects = GameObject.FindObjectsOfType<HiddenObjects>();
+        Debug.Log("Length: " + objects.Length);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	    foreach(var person in people)
+	    foreach(var obj in objects)
         {
-            Vector3 temp = person.transform.position - transform.position;
+            Vector3 temp = obj.transform.position - transform.position;
             temp.Normalize();
             if(Vector3.Dot(transform.forward,temp)> angleThreshold)
             {
-                person.GetComponent<Renderer>().material = onHighlight;
+                obj.ShowHiddenObjects();
+                Debug.Log(obj.name + " In range" + obj.transform.position);
+                Debug.DrawLine(obj.transform.position, transform.position);
             } else
             {
-                person.GetComponent<Renderer>().material = onBase;
+                obj.HideHiddenObjects();
             }
         }
 	}
