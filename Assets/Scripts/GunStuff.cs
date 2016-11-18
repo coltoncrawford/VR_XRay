@@ -11,9 +11,13 @@ public class GunStuff : MonoBehaviour {
 
     public int ammo;
 
+    private int index;
+
 	// Use this for initialization
 	void Start () {
-	}
+        index = SteamVR_Controller.GetDeviceIndex(controller);
+
+    }
 	
     void FireBullet() {
         
@@ -32,7 +36,7 @@ public class GunStuff : MonoBehaviour {
 	void Update () {
         bulletTimer += Time.deltaTime;
 
-        if (SteamVR_Controller.Input(SteamVR_Controller.GetDeviceIndex(controller)).GetHairTrigger()) {
+        if (SteamVR_Controller.Input(index).GetHairTrigger()) {
             if(ammo > 0) { FireBullet(); }
         }
 	}
