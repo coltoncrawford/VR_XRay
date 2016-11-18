@@ -39,6 +39,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000013022005978}
   - 95: {fileID: 95000013055920420}
+  - 195: {fileID: 195000014023044236}
+  - 114: {fileID: 114000012098488454}
   m_Layer: 0
   m_Name: Hellephant
   m_TagString: Untagged
@@ -81,10 +83,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012299009100}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.42, y: 0.635, z: 0.52}
+  m_LocalRotation: {x: -0, y: -0.7933523, z: -0, w: 0.60876286}
+  m_LocalPosition: {x: 1.9085977, y: -0.110000014, z: 5.0944886}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -104.691, z: 0}
   m_Children:
   - {fileID: 4000014097912990}
   - {fileID: 4000011175966378}
@@ -156,6 +158,17 @@ MonoBehaviour:
   radius: 0.8
   min: 3
   max: 2
+--- !u!114 &114000012098488454
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012299009100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4be1a18906cfcb642a0a2f3ae9b7c702, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000012883569106
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -222,3 +235,23 @@ SkinnedMeshRenderer:
     m_Center: {x: -1.0697424, y: -0.0020528436, z: 0.34928906}
     m_Extent: {x: 1.1027746, y: 1.4641979, z: 1.4643224}
   m_DirtyAABB: 0
+--- !u!195 &195000014023044236
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012299009100}
+  m_Enabled: 1
+  m_Radius: 1.33
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
