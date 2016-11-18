@@ -14,6 +14,8 @@ public class GameMode : MonoBehaviour {
 
     public Transform swordSpawner;
     public Text stateText;
+    public Slider slider;
+    public float timeToWin = 60;
 
     [Header("Display")]
     public StateText winText;
@@ -21,32 +23,39 @@ public class GameMode : MonoBehaviour {
 
     private GunStuff gun;
     private Health health;
-
+    private float currentTime;
 
     private bool hasEnded = false;
 
 	// Use this for initialization
 	void Start () {
+        currentTime = timeToWin;
         gun = FindObjectOfType<GunStuff>();
 
-        SpawnObjects[] obs = FindObjectsOfType<SpawnObjects>();
-        int randomIndex = Random.Range(0, obs.Length);
+        Health[] healths = FindObjectsOfType<Health>();
+        int randomIndex = Random.Range(0, healths.Length);
         Transform sword = Instantiate(swordSpawner);
-        sword.SetParent(obs[randomIndex].transform, false);
-        health = obs[randomIndex].transform.parent.GetComponentInChildren<Health>();
+        sword.SetParent(healths[randomIndex].obs.objects.transform, false);
+        health = healths[randomIndex];
     }
 	
 	// Update is called once per frame
 	void Update () {
         if(!hasEnded)
         {
-            if (gun.IsEmpty || health.IsDead)
+            if (gun == null || health == null) return;
+            currentTime -= Time.deltaTime;
+            if(slider != null)
+            {
+                slider.value = timeToWin / timeToWin;
+            }
+
+            if (gun.IsEmpty || health.IsDead || currentTime <= 0.3f)
             {
                 hasEnded = true;
                 StartCoroutine(CheckForEnd());
             }
         }
-
 	}
 
     IEnumerator CheckForEnd()
