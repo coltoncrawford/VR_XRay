@@ -21,7 +21,7 @@ public class GameMode : MonoBehaviour {
     public StateText winText;
     public StateText lostText;
 
-    private GunStuff gun;
+    public GunStuff gun;
     private Health health;
     private float currentTime;
 
@@ -30,24 +30,26 @@ public class GameMode : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         currentTime = timeToWin;
-        gun = FindObjectOfType<GunStuff>();
+        //gun = FindObjectOfType<GunStuff>();
 
         Health[] healths = FindObjectsOfType<Health>();
         int randomIndex = Random.Range(0, healths.Length);
         Transform sword = Instantiate(swordSpawner);
         sword.SetParent(healths[randomIndex].obs.objects.transform, false);
         health = healths[randomIndex];
+        Debug.Log(health == null);
+        Debug.Log(gun == null);
     }
 	
 	// Update is called once per frame
 	void Update () {
         if(!hasEnded)
         {
-            if (gun == null || health == null) return;
+            //if (gun == null || health == null) return;
             currentTime -= Time.deltaTime;
-            if(slider != null)
+            //if(slider != null)
             {
-                slider.value = timeToWin / timeToWin;
+                slider.value = currentTime / timeToWin;
             }
 
             if (gun.IsEmpty || health.IsDead || currentTime <= 0.3f)

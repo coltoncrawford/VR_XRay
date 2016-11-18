@@ -156,8 +156,8 @@ MonoBehaviour:
   - {fileID: 4000013239084630, guid: 0a23e4607cb55a347a025a0836f75075, type: 2}
   - {fileID: 4000013149119748, guid: 425aa80942514754d8dd6cfeadd05672, type: 2}
   radius: 0.8
-  min: 3
-  max: 2
+  min: -4
+  max: 4
 --- !u!114 &114000012098488454
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -243,9 +243,9 @@ NavMeshAgent:
   m_GameObject: {fileID: 1000012299009100}
   m_Enabled: 1
   m_Radius: 1.33
-  m_Speed: 3.5
+  m_Speed: 4.5
   m_Acceleration: 8
-  avoidancePriority: 50
+  avoidancePriority: 99
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1

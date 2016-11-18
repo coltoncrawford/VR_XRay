@@ -24,7 +24,6 @@ public class HighLightOnPoint : MonoBehaviour {
             if(Vector3.Dot(transform.forward,temp)> angleThreshold)
             {
                 obj.ShowHiddenObjects();
-                Debug.Log(obj.name + " In range" + obj.transform.position);
                 Debug.DrawLine(obj.transform.position, transform.position);
             } else
             {

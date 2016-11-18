@@ -7,15 +7,17 @@ public class GunStuff : MonoBehaviour {
 
     public GameObject bullet;
 
+    public Transform forward;
+
     private float bulletTimer = 0;
 
     public int ammo;
 
-    private int index;
+    private int index = -1;
 
 	// Use this for initialization
-	void Start () {
-        index = SteamVR_Controller.GetDeviceIndex(controller);
+	void OnEnable () {
+        index = -1;
 
     }
 	
@@ -23,8 +25,8 @@ public class GunStuff : MonoBehaviour {
         
         if(bulletTimer >= 0.1f)
         {
-            Rigidbody rb = ((GameObject)Instantiate(bullet, transform.position + (transform.forward), Quaternion.identity)).GetComponent<Rigidbody>();
-            rb.AddForce((transform.forward + Random.insideUnitSphere * 0.01f).normalized * 10000);
+            Rigidbody rb = ((GameObject)Instantiate(bullet, forward.position + (forward.forward), Quaternion.identity)).GetComponent<Rigidbody>();
+            rb.AddForce((forward.forward + Random.insideUnitSphere * 0.01f).normalized * 10000);
             Destroy(rb.gameObject, 10.0f);
 
             bulletTimer = 0;
@@ -34,6 +36,11 @@ public class GunStuff : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        if(index == -1)
+        {
+            index = SteamVR_Controller.GetDeviceIndex(controller);
+            return;
+        }
         bulletTimer += Time.deltaTime;
 
         if (SteamVR_Controller.Input(index).GetHairTrigger()) {
